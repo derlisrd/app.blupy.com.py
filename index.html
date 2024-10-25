@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Blupy App</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+        function redirectBasedOnDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.teo.blupy";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/py/app/blupy/id6475891959";
+            } else {
+                window.location.href = "https://blupy.com.py/";
+            }
+        }
+        window.onload = redirectBasedOnDevice;
+    </script>
+</head>
+<body>
+    <div>
+        <header>
+
+        </header>
+        <main>
+
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>
