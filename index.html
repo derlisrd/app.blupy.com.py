@@ -19,15 +19,27 @@
         <meta property="og:description" content="Blupy, app de línea de crédito para descuentos exclusivos en PuntoFarma. Fácil de usar, rápida y segura." />
         <link rel="icon" href="https://raw.githubusercontent.com/derlisrd/app.blupy.com.py/refs/heads/main/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
     <script>
         function redirectBasedOnDevice() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
+            const androidPackageName = "com.teo.blupy";
+            const iosAppId = "6475891959";
+    
+            // Redirección para Android
             if (/android/i.test(userAgent)) {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.teo.blupy";
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = "https://apps.apple.com/py/app/blupy/id6475891959";
-            } else {
+                window.location.href = `market://details?id=${androidPackageName}`;
+                // Como fallback, se puede usar la URL web
+                setTimeout(() => {
+                    window.location.href = `https://play.google.com/store/apps/details?id=${androidPackageName}`;
+                }, 500);
+            } 
+            // Redirección para iOS
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = `https://apps.apple.com/py/app/blupy/id${iosAppId}`;
+            } 
+            // Redirección para otros dispositivos
+            else {
                 window.location.href = "https://blupy.com.py/";
             }
         }
